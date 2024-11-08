@@ -273,12 +273,12 @@ print_info "Installing package: 'openjdk-$jdk_version'"
 $pkgm install "openjdk-$jdk_version" -y
 print_info "JDK $jdk_version has been installed."
 
-jdk_dir="$SYSROOT/opt/openjdk"
+jdk_dir="$PREFIX/opt/openjdk"
 
 print_info "Updating ide-environment.properties..."
 print_info "JAVA_HOME=$jdk_dir"
 echo ""
-props_dir="$SYSROOT/etc"
+props_dir="$PREFIX/etc"
 props="$props_dir/ide-environment.properties"
 
 if [ ! -d $props_dir ]; then
@@ -293,7 +293,7 @@ else
         printf "JAVA_HOME=$jdk_dir" > $props
         print_success "Properties file updated successfully!"
     else
-        print_err "Manually edit $SYSROOT/etc/ide-environment.properties file and set JAVA_HOME and ANDROID_SDK_ROOT."
+        print_err "Manually edit $PREFIX/etc/ide-environment.properties file and set JAVA_HOME and ANDROID_SDK_ROOT."
     fi
 fi
 
